@@ -6,10 +6,13 @@ const Home = () => {
   const [todos,setTodos] = useState([])
   
   return (
-    <div>
-      <h1>TodoList</h1>
+    <div className='Header'>
+      <p>TodoList</p>
       <Create/>
       {
+        todos.length === 0 ? 
+        <div><h2>No Todo</h2></div>
+        :
         todos.map((todo,index) =>(
           <div key={index}>
             {todo}
