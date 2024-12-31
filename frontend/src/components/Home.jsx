@@ -1,9 +1,17 @@
-import React, { useState } from 'react'
+import React, { useState,useEffect } from 'react'
 import Create from './Create'
+import axios from 'axios'
 
 const Home = () => {
 
   const [todos,setTodos] = useState([])
+
+  
+  useEffect(()=>{
+    axios.get('http://localhost:3001/get')
+    .then(result => setTodos(result.data))
+    .catch(error => console.log(error))
+  },[])
   
   return (
     <div className='Header'>
@@ -15,7 +23,7 @@ const Home = () => {
         :
         todos.map((todo,index) =>(
           <div key={index}>
-            {todo}
+            {todo.task}
           </div>
         ))
       }
